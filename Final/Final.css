@@ -1,0 +1,106 @@
+/* ===== Custom Background ===== */
+body {
+    background-color: #e8f0ff;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* ===== Navigation Styling ===== */
+nav {
+    background: #003087;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Header Styling ===== */
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+/* ===== Content Divs ===== */
+.content-block {
+    background: white;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.video-block, .tableau-block {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ===== Font Colors ===== */
+h1, h2 {
+    color: #003087;
+}
+
+/* ===== Placeholder Images ===== */
+.placeholder-img {
+    width: 80%;
+    display: block;
+    margin: 15px auto;
+    border-radius: 10px;
+    border: 3px dashed #003087;
+}
+
+/* Responsive Tableau styling */
+.tableau-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Center all block elements inside these divs */
+.content-block,
+.video-block,
+.tableau-block {
+    background: white;
+    padding: 20px;
+    margin: 30px auto;      /* <— auto automatically centers the block */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    width: 80%;             /* <— controls width for nice centering */
+    max-width: 900px;       /* <— prevents it from getting too wide */
+}
+
+/* Center images */
+.placeholder-img {
+    width: 80%;
+    max-width: 600px;
+    display: block;
+    margin: 15px auto;      /* <— centers image */
+    border-radius: 10px;
+    border: 3px dashed #003087;
+}
+
+/* Center YouTube iframe */
+.video-block iframe {
+    display: block;
+    margin: 0 auto;         /* <— centers iframe */
+}
+
+/* Center Tableau */
+.tableau-block iframe,
+.tableauPlaceholder {
+    display: block;
+    margin: 0 auto;
+}
+

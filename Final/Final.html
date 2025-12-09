@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BYU Sports – Scratch Page</title>
+    <link rel="stylesheet" href="Final.css">
+</head>
+
+<body>
+
+    <!-- ===== Navigation Back to Professional Pages ===== -->
+    <nav>
+        <a href="professional-page-1.html">Professional Page 1</a> |
+        <a href="professional-page-2.html">Professional Page 2</a>
+    </nav>
+
+    <!-- ===== Page Header ===== -->
+    <header id="top">
+        <h1>BYU Sports: Football & Men's Basketball</h1>
+    </header>
+
+
+
+    <!-- ====================================================
+         DIV #1 — FOOTBALL SECTION
+    ====================================================== -->
+    <div class="content-block">
+        <h2>BYU Football</h2>
+        <p>
+            BYU Football competes in the Big 12 and has a long history of elite quarterbacks, 
+            record-setting offenses, and passionate fans. Below are a few key stats:
+        </p>
+
+        <!-- Ordered list with embedded unordered list requirement -->
+        <ol>
+            <li>Recent Season Stats:
+                <ul>
+                    <li>2023 Record: 5–7</li>
+                    <li>Big 12 Debut Season</li>
+                    <li>Top Win: vs. Arkansas</li>
+                </ul>
+            </li>
+            <li>All-Time Achievements:
+                <ul>
+                    <li>1984 National Championship</li>
+                    <li>Heisman Trophy (Ty Detmer)</li>
+                    <li>Elite QB Tradition</li>
+                </ul>
+            </li>
+        </ol>
+
+        <!-- Placeholder image #1 -->
+        <img src="https://www.deseret.com/resizer/v2/C74HUNAI7BAXNM7QKMTNC22KLM.JPG?auth=569a360443a21f3fd4170db404632b4ebf38a2cf71be728c103fc12015096f1d&focal=1426%2C878&width=800&height=600" alt="BYU Football" class="placeholder-img">
+    </div>
+
+
+    <!-- ====================================================
+         DIV #2 — MEN'S BASKETBALL SECTION
+    ====================================================== -->
+    <div class="content-block">
+        <h2>BYU Men's Basketball</h2>
+        <p>BYU Basketball is known for fast offense, deep shooting, and intense home-court energy.</p>
+
+        <ol>
+            <li>Recent Season Highlights:
+                <ul>
+                    <li>2024 Season: NCAA Tournament Appearance</li>
+                    <li>Ranked Top 15 in Offense Efficiency</li>
+                    <li>Key Wins Over Baylor & Kansas</li>
+                </ul>
+            </li>
+        </ol>
+
+        <!-- Placeholder image #2 -->
+        <img src="https://bloximages.chicago2.vip.townnews.com/somdnews.com/content/tncms/assets/v3/editorial/7/aa/7aa0330b-fd0f-5a79-80a3-0279458d777f/69310f2ceb1d0.image.jpg?resize=750%2C500" alt="BYU Basketball" class="placeholder-img">
+    </div>
+
+
+
+    <!-- ====================================================
+         DIV #3 — YOUTUBE VIDEO
+    ====================================================== -->
+    <div class="video-block">
+        <h2>Top BYU Sports Hype Video</h2>
+        <!-- Embedded YouTube video -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KruaeQKyIis?si=KWOh3sy6k3xAjU0a" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+
+<a href="game.html">Play the Temple Run Style Game!</a>
+
+    <!-- ====================================================
+         TABLEAU GRAPH SECTION
+    ====================================================== -->
+    <div class="tableau-block">
+    <h2>Interactive Tableau Visualization</h2>
+
+    <div class="tableau-container">
+        <div class='tableauPlaceholder' id='vizContainer' style='position: relative'>
+            <noscript>
+                <a href='#'>
+                    <img alt='PlayerViz' 
+                         src='https://public.tableau.com/static/images/Jo/JordanCareerScoring/PlayerViz/1_rss.png' 
+                         style='border: none' />
+                </a>
+            </noscript>
+
+            <object class='tableauViz'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value=''/>
+                <param name='name' value='JordanCareerScoring/PlayerViz'/>
+                <param name='tabs' value='no'/>
+                <param name='toolbar' value='yes'/>
+                <param name='static_image' value='https://public.tableau.com/static/images/Jo/JordanCareerScoring/PlayerViz/1.png'/>
+                <param name='animate_transition' value='yes'/>
+                <param name='display_static_image' value='yes'/>
+                <param name='display_spinner' value='yes'/>
+                <param name='display_overlay' value='yes'/>
+                <param name='display_count' value='yes'/>
+                <param name='language' value='en-US'/>
+            </object>
+        </div>
+    </div>
+
+    <script type='text/javascript'>
+        var containerDiv = document.getElementById("vizContainer");
+        var vizObject = containerDiv.getElementsByTagName("object")[0];
+        vizObject.style.width = "100%";
+        vizObject.style.height = "900px"; 
+        var scriptElement = document.createElement("script");
+        scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+        vizObject.parentNode.insertBefore(scriptElement, vizObject);
+    </script>
+</div>
+
+
+
+
+    <!-- ===== On-page anchor link example ===== -->
+    <p style="margin-top: 50px;">
+        <a href="#top">Back to top</a>
+    </p>
+
+</body>
+</html>

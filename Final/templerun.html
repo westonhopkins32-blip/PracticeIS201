@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Temple Run Style Game</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(#87CEEB, #4a90e2);
+        font-family: Arial, sans-serif;
+    }
+
+    #gameContainer {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Ground */
+    #ground {
+        position: absolute;
+        bottom: 0;
+        width: 200%;
+        height: 140px;
+        background: url('https://i.imgur.com/1j9Jg4Y.png');
+        background-size: cover;
+        animation: groundMove 2s linear infinite;
+    }
+
+    @keyframes groundMove {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    /* Player */
+    #player {
+        position: absolute;
+        bottom: 140px;
+        left: 80px;
+        width: 70px;
+        height: 90px;
+        background: url('https://i.imgur.com/3Ves3x6.png') center/contain no-repeat;
+        transition: transform 0.1s;
+    }
+
+    /* Player sliding */
+    .slide {
+        height: 50px !important;
+        background: url('https://i.imgur.com/vuTtKzd.png') center/contain no-repeat !important;
+    }
+
+    /* Obstacles */
+    .obstacle {
+        position: absolute;
+        bottom: 140px;
+        width: 60px;
+        height: 90px;
+        background: url('https://i.imgur.com/Qq8I3Bz.png') center/contain no-repeat;
+        animation: moveObstacle 3s linear forwards;
+    }
+
+    @keyframes moveObstacle {
+        from { right: -100px; }
+        to { right: 120%; }
+    }
+
+    /* Score */
+    #score {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px black;
+    }
+
+</style>
+</head>
+<body>
+
+<div id="gameContainer">
+    <div id="ground"></div>
+    <div id="player"></div>
+    <div id="score">0</div>
+</div>
+
+<script>
+let player = document.getElementById("player");
+let gameContainer = document.getElementById("gameContainer");
+let scoreDisplay = document.getElementById("score");
+
+let jumping = false;
+let sliding = false;
+let score = 0;
+
+// ------------------- MOVEMENT ------------------------
+
+function jump() {
+    if (jumping || sliding) return;
+
+    jumping = true;
+    let jumpHeight = 150;
+    let upTime = 15;
+    let downTime = 15;
+
+    let upInterval = setInterval(() => {
+        let bottom = parseInt(window.getComputedStyle(player).bottom);
+        if (bottom >= 140 + jumpHeight) {
+            clearInterval(upInterval);
+            let downInterval = setInterval(() => {
+                let bottom = parseInt(window.getComputedStyle(player).bottom);
+                if (bottom <= 140) {
+                    clearInterval(downInterval);
+                    jumping = false;
+                } else {
+                    player.style.bottom = bottom - 10 + "px";
+                }
+            }, downTime);
+        } else {
+            player.style.bottom = bottom + 10 + "px";
+        }
+    }, upTime);
+}
+
+function slide() {
+    if (jumping || sliding) return;
+
+    sliding = true;
+    player.classList.add("slide");
+
+    setTimeout(() => {
+        sliding = false;
+        player.classList.remove("slide");
+    }, 800);
+}
+
+// ------------------- OBSTACLES ------------------------
+
+function spawnObstacle() {
+    let obstacle = document.createElement("div");
+    obstacle.classList.add("obstacle");
+    gameContainer.appendChild(obstacle);
+
+    let interval = setInterval(() => {
+        let playerRect = player.getBoundingClientRect();
+        let obsRect = obstacle.getBoundingClientRect();
+
+        if (
+            playerRect.left < obsRect.right &&
+            playerRect.right > obsRect.left &&
+            playerRect.bottom > obsRect.top + 20 &&
+            playerRect.top < obsRect.bottom
+        ) {
+            alert("GAME OVER!\nScore: " + score);
+            location.reload();
+        }
+    }, 20);
+
+    obstacle.addEventListener("animationend", () => {
+        obstacle.remove();
+        clearInterval(interval);
+    });
+
+    // Random safe spacing (no impossible obstacles)
+    let nextSpawn = Math.random() * 1200 + 900;
+    setTimeout(spawnObstacle, nextSpawn);
+}
+
+spawnObstacle();
+
+// ------------------- SCORING ------------------------
+
+setInterval(() => {
+    score += 1;
+    scoreDisplay.textContent = score;
+}, 200);
+
+// ------------------- CONTROLS ------------------------
+
+document.addEventListener("keydown", (e) => {
+    if (e.code === "ArrowUp" || e.code === "Space") jump();
+    if (e.code === "ArrowDown") slide();
+});
+
+document.addEventListener("touchstart", (e) => {
+    let touchY = e.changedTouches[0].clientY;
+
+    if (touchY < window.innerHeight / 2) jump();
+    else slide();
+});
+</script>
+
+</body>
+</html>
+
